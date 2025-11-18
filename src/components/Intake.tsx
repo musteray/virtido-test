@@ -48,14 +48,97 @@ export default function Intake() {
               control={form.control}
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel htmlFor="form-intake-query">
-                    Query
+                  <FieldLabel htmlFor="form-intake-name">
+                    Name
                   </FieldLabel>
                   <Input
                     {...field}
-                    id="form-intake-query"
+                    id="form-intake-name"
                     aria-invalid={fieldState.invalid}
-                    placeholder="E.g., building materials"
+                    autoComplete="off"
+                  />
+                  {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
+                </Field>
+              )}
+            />
+          </FieldGroup>
+          <FieldGroup className="mt-5">
+            <Controller
+              name="company"
+              control={form.control}
+              render={({ field }) => (
+                <Field>
+                  <FieldLabel htmlFor="form-intake-company">
+                    Company
+                  </FieldLabel>
+                  <Input
+                    {...field}
+                    id="form-intake-company"
+                    autoComplete="off"
+                  />
+                </Field>
+              )}
+            />
+          </FieldGroup>
+          <FieldGroup className="mt-5">
+            <Controller
+              name="phone"
+              control={form.control}
+              render={({ field, fieldState }) => (
+                <Field data-invalid={fieldState.invalid}>
+                  <FieldLabel htmlFor="form-intake-phone">
+                    Phone
+                  </FieldLabel>
+                  <Input
+                    {...field}
+                    id="form-intake-phone"
+                    aria-invalid={fieldState.invalid}
+                    autoComplete="off"
+                  />
+                  {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
+                </Field>
+              )}
+            />
+          </FieldGroup>
+          <FieldGroup className="mt-5">
+            <Controller
+              name="email"
+              control={form.control}
+              render={({ field, fieldState }) => (
+                <Field data-invalid={fieldState.invalid}>
+                  <FieldLabel htmlFor="form-intake-email">
+                    Email
+                  </FieldLabel>
+                  <Input
+                    {...field}
+                    id="form-intake-email"
+                    aria-invalid={fieldState.invalid}
+                    autoComplete="off"
+                  />
+                  {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
+                </Field>
+              )}
+            />
+          </FieldGroup>
+          <FieldGroup className="mt-5">
+            <Controller
+              name="address"
+              control={form.control}
+              render={({ field, fieldState }) => (
+                <Field data-invalid={fieldState.invalid}>
+                  <FieldLabel htmlFor="form-intake-address">
+                    Address
+                  </FieldLabel>
+                  <Input
+                    {...field}
+                    id="form-intake-address"
+                    aria-invalid={fieldState.invalid}
                     autoComplete="off"
                   />
                   {fieldState.invalid && (
@@ -71,14 +154,13 @@ export default function Intake() {
               control={form.control}
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel htmlFor="form-rhf-demo-description">
-                    Description
+                  <FieldLabel htmlFor="form-intake-description">
+                    Description (1–5 sentences)
                   </FieldLabel>
                   <InputGroup>
                     <InputGroupTextarea
                       {...field}
-                      id="form-rhf-demo-description"
-                      placeholder="I'm having an issue with the login button on mobile."
+                      id="form-intake-description"
                       rows={6}
                       className="min-h-24 resize-none"
                       aria-invalid={fieldState.invalid}
@@ -102,7 +184,9 @@ export default function Intake() {
               control={form.control}
               render={({ field, fieldState }) => (
                 <FieldSet data-invalid={fieldState.invalid}>
-                  <FieldLegend variant="label">Responses</FieldLegend>
+                  <FieldLegend variant="label">
+                    Difficult Access (site)
+                  </FieldLegend>
                   <FieldGroup data-slot="checkbox-group">
                     <Field orientation="horizontal">
                       <Checkbox
@@ -115,7 +199,7 @@ export default function Intake() {
                         htmlFor="form-intake-difficult"
                         className="font-normal"
                       >
-                        Is difficult access?
+                        Require ladder/scaffold or special access
                       </FieldLabel>
                     </Field>
                   </FieldGroup>
@@ -131,7 +215,7 @@ export default function Intake() {
       <CardFooter>
         <Field orientation="horizontal">
           <Button type="submit" form="form-intake">
-            Search
+            Run Matching
           </Button>
           <Button type="button" variant="outline" onClick={() => form.reset()}>
             Clear
